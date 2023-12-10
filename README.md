@@ -1,4 +1,4 @@
-# Currency converter
+# Bank API
 
 ## Description
 - An API that allows the creation of a user and authentication to access the API
