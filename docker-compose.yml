@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=12345
+      - JWT_SECRET=TopSecret
+      - API_ENDPOINT=http://localhost:3000/api
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    networks:
+      - bank-api
+
+  postgres:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+    ports:
+      - 5432:5432
+    networks:
+      - bank-api
+
+networks:
+  bank-api:
+    driver: bridge
