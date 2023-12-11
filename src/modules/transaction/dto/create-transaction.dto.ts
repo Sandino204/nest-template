@@ -3,7 +3,9 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNumber, IsOptional, IsString, Min } from 'class-validator';
 
 export class CreateTransactionDto {
-  @ApiProperty()
+  @ApiProperty({
+    enum: TRANSACTION_TYPE
+  })
   @IsEnum(TRANSACTION_TYPE)
   type: TRANSACTION_TYPE;
 

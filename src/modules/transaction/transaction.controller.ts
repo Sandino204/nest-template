@@ -12,12 +12,13 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { User } from '../../decorators/user.decorator';
 import { GetTransactionDto } from './dto/get-transactions.dto';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { DefaultResponse } from '../account/response/default.response';
 import { Transaction } from './entities/transaction.entity';
 
 @Controller('transaction')
 @ApiTags('Transactions')
+@ApiBearerAuth()
 @UseGuards(AuthGuard)
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
