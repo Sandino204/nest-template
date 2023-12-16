@@ -1,9 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './modules/auth/entities/user.entity';
-import { AccountModule } from './modules/account/account.module';
-import { TransactionModule } from './modules/transaction/transaction.module';
 import { HealthModule } from './modules/health/health.module';
 import {ConfigModule} from "@nestjs/config";
 
@@ -20,8 +17,6 @@ import {ConfigModule} from "@nestjs/config";
       synchronize: true,
     }),
     AuthModule,
-    AccountModule,
-    TransactionModule,
     HealthModule,
   ],
   controllers: [],
